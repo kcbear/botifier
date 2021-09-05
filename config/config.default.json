@@ -1,0 +1,29 @@
+{
+    "twilio":
+    {
+        "accountSid": "Please submit your own value",
+        "authToken": "Please submit your own value",
+        "messagingServiceSid": "Please submit your own value",
+        "to": "Please submit your own value"
+    },
+
+    "targets": [
+    {
+        "name": "xbox-x-microsoft",
+        "url": "www.microsoft.com",
+        "protocal": "https",
+        "path": "/en-au/store/configure/Xbox-Series-X/8WJ714N3RBTL",
+        "phrase": "<h4>Choose your console (required)</h4>",
+        "length": 3000,
+        "match": "Out of stock"
+    },
+    {
+        "name": "xbox-x-bigW",
+        "url": "bigw",
+        "protocal": "https",
+        "path": "/path",
+        "phrase": "<h4>Choose your console (required)</h4>",
+        "length": 5000,
+        "match": "Out of stock"
+    }]
+}
