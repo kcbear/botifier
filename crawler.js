@@ -9,9 +9,10 @@ var config = require("./config")()
 // imports -----------
 var http = require('http')
 var https = require('https')
+var zlib = require('zlib')
 // End imports -----------
 
-const client = require('twilio')(config.twilio.accountSid, config.twilio.authToken);
+const client = require('twilio')(config.twilio.accountSid, config.twilio.authToken)
 
 function notify(target) {
     var options = {
@@ -27,25 +28,55 @@ function notify(target) {
 }
 
 function analyze(html, target) {
+    //    console.log("=====================" + html)
 
-    var i = html.indexOf(target.phrase)
+    var i = html.indexOf(target.keyword)
     if (i == -1) { // skip unrelated html body chunks
         return
     }
 
-    var keywords = html.substring(i, i + target.length);
-    var available = (keywords.indexOf(target.match) == -1) ? true : false
+    var excerpt = html.substring(i, i + target.padding)
+    //    console.log(excerpt)
+    var available = false
+    if (target.contains) {
+        available = (excerpt.indexOf(target.matcher) != -1) ? true : false
+    } else {
+        available = (excerpt.indexOf(target.matcher) == -1) ? true : false
+    }
+
     if (available) {
         notify(target)
         console.log('notified with sms...')
     }
 }
 
-function makeResponseHandler(target) {
+function handleGzippedHttpResponseStream(res, target) {
+    var gunzip = zlib.createGunzip()
+    var buffer = []
 
-    return function(response) {
-        analyze(response, target)
-    }
+    res.pipe(gunzip)
+    gunzip.on('data', function(data) {
+        // decompression chunk ready, add it to the buffer
+        buffer.push(data.toString())
+
+    }).on("end", function() {
+        // response and decompression complete, join the buffer and return
+        analyze(buffer.join(""), target)
+
+    }).on("error", function(e) {
+        console.error(`${target.name}, error: ${error}`)
+    })
+}
+
+function handleHttpResponseStream(res, target) {
+    var body = ''
+
+    res.on('data', function(chunk) {
+        body += chunk
+    })
+    res.on('end', function() {
+        analyze(body, target)
+    })
 }
 
 function asyncRequest(target) {
@@ -53,25 +84,22 @@ function asyncRequest(target) {
         host: target.url,
         path: target.path,
         method: 'GET',
-        headers: { // pretend to be a browser to avoid bot detection
-            'content-type': 'text/html charset=utf-8',
-            'user-agent': 'Mozilla/5.0 (Macintosh Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36'
-        },
     }
+
+    options['headers'] = target.headers
 
     var req = https.request(options, (res) => {
         console.log(`${target.name}, statusCode: ${res.statusCode}`)
-        var body = '';
-        res.on('data', function(chunk) {
-            body += chunk;
-        });
-        res.on('end', function() {
-            analyze(body, target)
-        });
-    })
 
-    req.on('error', (error) => {
-        console.error(`${target.name}, error: ${error}`)
+        if ('gzip' == res.headers['content-encoding']) {
+            handleGzippedHttpResponseStream(res, target)
+        } else {
+            handleHttpResponseStream(res, target)
+        }
+
+    })
+    req.on('error', (e) => {
+        console.error(`${target.name}, error: ${e}`)
     })
 
     req.write('data')
@@ -79,14 +107,19 @@ function asyncRequest(target) {
 
 }
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms)
+    })
+}
 
-function main() {
-    console.log(`Start crawler......\nTargets: ${JSON.stringify(config.targets, null, 4)}`)
+async function main() {
+    console.log('Start crawler......')
 
     config.targets.forEach(function(target) {
         asyncRequest(target)
     })
-
+    console.log('End')
 }
 
 // ======= Run it
