@@ -23,20 +23,17 @@ function notify(target) {
 
     client.messages
         .create(options)
-        .then(message => console.log(message.sid))
+        .then(message => console.log(message.body))
         .done()
 }
 
 function analyze(html, target) {
-    //    console.log("=====================" + html)
-
     var i = html.indexOf(target.keyword)
     if (i == -1) { // skip unrelated html body chunks
         return
     }
 
     var excerpt = html.substring(i, i + target.padding)
-    //    console.log(excerpt)
     var available = false
     if (target.contains) {
         available = (excerpt.indexOf(target.matcher) != -1) ? true : false
@@ -48,6 +45,10 @@ function analyze(html, target) {
         notify(target)
         console.log('notified with sms...')
     }
+
+    // debug
+    // console.log("=====================" + html)
+    // console.log(excerpt)
 }
 
 function handleGzippedHttpResponseStream(res, target) {
@@ -117,7 +118,9 @@ async function main() {
     console.log('Start crawler......')
 
     config.targets.forEach(function(target) {
-        asyncRequest(target)
+        if (target.enable) {
+            asyncRequest(target)
+        }
     })
     console.log('End')
 }
