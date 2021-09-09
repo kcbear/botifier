@@ -47,8 +47,8 @@ function analyze(html, target) {
     }
 
     // debug
-    // console.log("=====================" + html)
-    // console.log(excerpt)
+    // console.log("=====================\n" + html)
+    // console.log("---------\n" + excerpt)
 }
 
 function handleGzippedHttpResponseStream(res, target) {
@@ -115,7 +115,7 @@ function sleep(ms) {
 }
 
 async function main() {
-    console.log('Start crawler......')
+    console.log(`${new Date()}: Start crawler......`)
 
     config.targets.forEach(function(target) {
         if (target.enable) {
