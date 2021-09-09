@@ -46,9 +46,34 @@
         "protocol": "https",
         "url": "www.target.com.au",
         "path": "/p/P64445021/json",
-        "keyword": "productAvailability",
+        "keyword": "productDisplayType",
         "padding": 50,
-        "matcher": "NORMAL",
+        "matcher": "AVAILABLE_FOR_SALE",
+        "contains": true,
+        "headers":
+        {
+            "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "accept-language": "en-GB,en-US;q=0.9,en;q=0.8,ja;q=0.7,zh-TW;q=0.6,zh-CN;q=0.5,zh;q=0.4",
+            "cache-control": "max-age=0",
+            "sec-ch-ua": "\"Chromium\";v=\"92\", \" Not A;Brand\";v=\"99\", \"Google Chrome\";v=\"92\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-fetch-dest": "document",
+            "sec-fetch-mode": "navigate",
+            "sec-fetch-site": "none",
+            "sec-fetch-user": "?1",
+            "upgrade-insecure-requests": "1",
+            "cookie": "optimizelyEndUserId=oeu1627389102536r0.3652631903494197; _ga=GA1.3.124907950.1627389104; t_psn=5286; t_pc=Unsw Sydney, 2052; t_hd_pc=2052; _gcl_au=1.1.37427496.1627389106; _cc=AZk9vg8C%2Bff32oVfT8bubMy%2F; _scid=9b7b60ad-f631-44af-99fb-231ca8448a92; ConstructorioID_client_id=e4f6a9a2-b5ee-47f0-9ffb-502c16415883; _hjid=cb8348e5-ca32-493a-8c87-ae68f4dc530c; _fbp=fb.2.1627389109003.1208010566; _pin_unauth=dWlkPVpXUTBNVGN5TnpJdE1tTXhZaTAwWmpWaUxXRm1NRFV0T1RReU56UmtOalk1WTJZMw; t_geo_country=AU; t_geo_region=NSW; t_geo_city=SYDNEY; AKA_A2=A; bm_sz=AF2A68F340FFFF793AFF398A828E0960~YAAQAwUgF+UbGHd7AQAAJzhQyg1O9eesmsnL/t9SX12hg0g7u7yFKuJYxuuqfylCr4DhXS3RiM4aqS76PZF79JSo2mCKZDIULbdu5eQesk9S0t00r7g4MY+lxDK1CFSmViIKFJ9LV4+ESFjB+M49bewrPbTnR9RBjzlnKgofIfEl2sV3QOaK3oOwDk+9Ie2zbCgB7YhznyFoi7mRcZmM3f145XXm5buH4DlpKMpY1z/CXSU/KgnHatQLaJmcEntylfA8jneQy/NQREaTzf3u5i3ghwg6VN1b/6q6QsvTwCMwfaXZ1uE=~3553350~3225669; rxVisitor=1631186859027OVM09VSH0JJ1JMQK7DB9U3UD2FQFVCEU; x-target=web; JSESSIONID=OGI5ZTUyNTgtM2JjYy00NjUzLTlhODAtMTA0ZDdlZDFiYTIw; ak_bmsc=756D98560C9BDE443C12F72FF7E892E8~000000000000000000000000000000~YAAQAwUgF+EcGHd7AQAAlD1Qyg1LrEgIZK+J7g9McFUM0xUMlgSwd3G2SCUN8gPDvK1OxEWp8OW77F1aG+H86Us2gEqnerM6qBhwvgfO2DYIZg0PH3B9v0JSu6QsETVu4L2qpiBIcg4kKXqn1VLr8lZkC7QVVCc1xV4kQTduJ+Ot3dmgn3K0KZipIyuE9OQtWlxhDl/dSXtWKP6K/FTbzK5MsDY8CvRBmsRV0w41WeApNl37rG0SCeCc8AcMcpFPTfH3r3MITEVpjt7o3qyc2fMQ/1+Qg91ioxW4AS9en6LePynBg7EhRw5LzGwfyuMXzRhaWVpyVsyLghZmrfUjumlFFN4s9NidGLMqIr3TXgG80ZqryQTUNN3x8MFf6HVqgRtHHnH4Y2x8UjDLyR5uFOzQLbkx1gqrLVbSNgwiE+YR+a6Tp/po0p5INf46oWMSX7tqlNMSNAh2J7jkPM/n4FqAUE3klfz630fhuA3IU92KbV8eDiaCZgxweVavGpY=; _gid=GA1.3.964777797.1631186860; xdVisitorId=10E2IPKTjlmmVWy7haLlBX10cpw_6t6BEeJ2FrgVChM82gQBB45; atgRecVisitorId=10E2IPKTjlmmVWy7haLlBX10cpw_6t6BEeJ2FrgVChM82gQBB45; _hjIncludedInSessionSample=1; _hjAbsoluteSessionInProgress=1; atgRecSessionId=zK_KUElRJqi2gJBQ2ox-tkADn34o5yXEXC5FD9svB3ga8M1bMWm4!281830830!2035176739; t_cookie_accept=true; _sctr=1|1631109600000; dtCookie=v_4_srv_1_sn_BIB13C7S19EDG1IUQLGKM1LFM11PCQ12_app-3Ac4c275d395d264a6_0_ol_0_perc_100000_mul_1; spl-declined=true; dtSa=-; RT=\"z=1&dm=www.target.com.au&si=1d2dc741-a7c4-48ac-8a3b-3481137cc01c&ss=ktcujfc8&sl=9&tt=563&obo=7&rl=1&ld=12hpz&r=44ztcbnq&ul=12hq3&hd=12i0v\"; dtLatC=92; akavpau_prod_maintenance_vp=1631188959~id=82c1e7ca72a108f6cb38d2a1e6b7cbe5; AWSALB=PIN/YB9FLJHZ8p6g7DDZ+XA4zN6g62X9lr9rJm9a/tNNf1e+qoMXwMGrynxJ+dzgr9oINAOgqQotZvJvHDXVVcb1bGsbL1/Ij8bcgevlyGSV1UGIN2BeIkiIE59A; AWSALBCORS=PIN/YB9FLJHZ8p6g7DDZ+XA4zN6g62X9lr9rJm9a/tNNf1e+qoMXwMGrynxJ+dzgr9oINAOgqQotZvJvHDXVVcb1bGsbL1/Ij8bcgevlyGSV1UGIN2BeIkiIE59A; bm_sv=A6EC14EAEFB4D97CC4D533D0AD9AE66C~FgLEz6Bf3Uop00xLWEdtRSl0kiYnQr5cFF9KnZVvT/mV8qkdV51hOba3GaGFpuNtCj8HxZGOqKF4/HrSwuhrofCTouLp5MZc/PLjTCkD8rH4FJcMo4w5UM3c2eCoPpfmULrO2I68JKQzU/Tfq5XPpDsl9KC8KFYoYgCgWyhjAmk=; _abck=F6CA182A99AB5817E9D34D57E5CF3BBA~-1~YAAQPQUgFzKmxop7AQAATq5rygYxEPp1fSslXHZwr11DXZTeQrxw3Qy+uKEJFcJFz+HQYn6imlllz9mZxKGXmBFJbTbYcLmFyJhVwQNZPP0g5WkT/G1OoosKhlDA7aEpOID6LUzr07F/U8ERACxmx1GlZoTvT91y/AiH/1t3Ufz+n3dy8Q4kxiFwOCL1shKvgt3g+3OaZt6IP60EqmblPO+etSv5lQEBiZUf/OIUbQR3ITNV4vgi4TGlDdask5MgiI4F9ebSHPF7LUSHqkEA/53lKuj6+vr4p6NqhOmsucYsXL1nfO43zhbdVmZcKDATv3Me037w0GLTkp8vrUdE53ZkLyw0yp9n3LsVpY85S/J6TB1zqx2iSvI7lTYacAa472CLLsb5S+bfFpSDFjSHm1gPEIgT3Obk30H5Ew==~-1~-1~-1; rxvt=1631190461809|1631186859030; dtPC=1$388655227_598h-vKDDCERQWVLAMWHMKMFQALWHPCBACERKK-0e0; utag_main=v_id:017bca504124000f781f2d14a85003079002407100fb8$_sn:1$_se:16$_ss:0$_st:1631190462866$ses_id:1631186862378%3Bexp-session$_pn:16%3Bexp-session; _uetsid=f29bee30116011ecb650ab832abd9fa0; _uetvid=9cbed0c0eed611eb8d09efdc4a397645"
+        }
+    },
+    {
+        "enable": true,
+        "name": "xbox-x-target",
+        "protocol": "https",
+        "url": "www.target.com.au",
+        "path": "/p/P64377728/json",
+        "keyword": "productDisplayType",
+        "padding": 50,
+        "matcher": "AVAILABLE_FOR_SALE",
         "contains": true,
         "headers":
         {
